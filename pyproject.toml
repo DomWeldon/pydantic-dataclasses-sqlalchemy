@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "pdsqla"
+version = "0.1.0"
+description = "Do pydantic dataclasses really fail with SQLAlchemy declarative mapping?"
+authors = ["Dom Weldon <dom.weldon@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "^1.8.2"
+SQLAlchemy = "^1.4.22"
+isort = "^5.9.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+bpython = "^0.21"
+black = "^21.7b0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 79
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.isort]
+profile = "hug"
+src_paths = ["pdsql", "tests"]
+multi_line_output = 3
+import_heading_stdlib = "Standard Library"
+import_heading_thirdparty = "Third Party Libraries"
+import_heading_firstparty = "App and Model Imports"
+import_heading_localfolder = "Local Folder"
+line_length = 79
+ensure_newline_before_comments = true
+include_trailing_comma = true
+use_parentheses = true
+known_third_party = ["pydantic", "pytest", "sqlalchemy"]
