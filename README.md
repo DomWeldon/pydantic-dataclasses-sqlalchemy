@@ -1,6 +1,14 @@
 # Cannot use Pydantic Dataclasses with delcarative mapping in SQLAlchemy
 
-# The problem
+## Some basics
+
+```toml
+python = "3.9.5"
+pydantic = "1.8.2"
+SQLAlchemy = "1.4.22"
+```
+
+## The problem
 
 The popular python ORM SQLAlchemy allows [users to declare models as dataclasses using the declarative interface](https://docs.sqlalchemy.org/en/14/orm/mapping_styles.html#example-two-dataclasses-with-declarative-table).
 

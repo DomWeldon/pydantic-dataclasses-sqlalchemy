@@ -6,7 +6,10 @@ from pdsqla import models
 
 @pytest.mark.parametrize(
     "model,data",
-    [(getattr(models, l), {f"{l.lower()}_id": 1, l.lower(): l}) for l in "AB"],
+    [
+        (getattr(models, l), {f"{l.lower()}_id": 1, l.lower(): l})
+        for l in "ABC"
+    ],
 )
 def test_insert(model, data, session: orm.Session):
     # arrange

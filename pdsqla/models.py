@@ -1,9 +1,22 @@
-"""Register our models on the dataclass"""
+"""Register our models on the declarative base"""
+# Third Party Libraries
+import sqlalchemy as sa
+
 # Local Folder
 from . import base_class, dcs
 
-A = base_class.Base.registry.mapped(dcs.A)
-B = base_class.Base.registry.mapped(dcs.B)
 Base = base_class.Base
 
-__all__ = ["A", "B", "Base"]
+A = Base.registry.mapped(dcs.A)
+B = Base.registry.mapped(dcs.B)
+
+
+@Base.registry.mapped
+class C:
+    __tablename__ = "c"
+
+    c_id: int = sa.Column(sa.Integer, primary_key=True)
+    c: str = sa.Column(sa.String)
+
+
+__all__ = ["A", "B", "C", "Base"]

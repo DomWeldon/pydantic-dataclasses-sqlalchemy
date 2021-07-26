@@ -6,8 +6,8 @@ authors = ["Dom Weldon <dom.weldon@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pydantic = "^1.8.2"
-SQLAlchemy = "^1.4.22"
+pydantic = "1.8.2"
+SQLAlchemy = "1.4.22"
 isort = "^5.9.2"
 
 [tool.poetry.dev-dependencies]
