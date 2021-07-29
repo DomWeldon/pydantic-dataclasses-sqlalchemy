@@ -21,7 +21,7 @@ This seems similar to the [standard library implementation](https://github.com/p
 {'__processed__', 'b', 'a', '__pydantic_model__', 'b_id', '__post_init__', '__get_validators__', '__initialised__', '_sa_instance_state', '__validate__', 'a_id'}
 ```
 
-When initalised, B has an attribute `__initialised__` and `__validate__`, which A lacks. A however has a `_sa_instance_state`, which is the cause of this bug.
+When initialised, B has an attribute `__initialised__` and `__validate__`, which A lacks. A however has a `_sa_instance_state`, which is the cause of this bug.
 
 [These are caused by the `__post_init__()` method attached by pydantic](https://github.com/samuelcolvin/pydantic/blob/master/pydantic/dataclasses.py#L129).
 
@@ -30,3 +30,10 @@ Does SQLAlchemy also use the `__post_init__()` hook?
 A search of the repo seems to suggest it doesn't...
 
 There appears to be [a caveat in the dataclass processing logic inside SQLA](https://github.com/sqlalchemy/sqlalchemy/blob/ac0c1aed2b3521393e054fde07f5c6c75153bc50/lib/sqlalchemy/orm/decl_base.py#L362).
+
+
+## Pydantic assumes it has access to `__dict__` on a model and can change it as required.
+
+https://github.com/samuelcolvin/pydantic/blob/4a54f393ad20ee91b51cd7a49ec46771ba4f8a18/pydantic/dataclasses.py#L101
+
+How does this mess up? `sqlalchemy.orm.instrumentation` and can I use `sqlalchemy.ext.instrumentation` to override it somehow?

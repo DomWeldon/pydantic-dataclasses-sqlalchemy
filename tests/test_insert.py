@@ -8,7 +8,7 @@ from pdsqla import models
     "model,data",
     [
         (getattr(models, l), {f"{l.lower()}_id": 1, l.lower(): l})
-        for l in "ABC"
+        for l in "ABCD"
     ],
 )
 def test_insert(model, data, session: orm.Session):

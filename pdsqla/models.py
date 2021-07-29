@@ -9,6 +9,7 @@ Base = base_class.Base
 
 A = Base.registry.mapped(dcs.A)
 B = Base.registry.mapped(dcs.B)
+D = Base.registry.mapped(dcs.D)
 
 
 @Base.registry.mapped
